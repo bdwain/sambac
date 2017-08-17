@@ -4,8 +4,9 @@
   "description": "Run your jasmine specs in the browser",
   "preferGlobal": true,
   "bin": {
-    "sambac": "index.js"
+    "sambac": "bin/sambac.js"
   },
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/acaides/sambac.git"
@@ -25,16 +26,16 @@
     "open": "0.0.5",
     "serve-index": "^1.7.2",
     "webpack-dev-server": "^2.3.0",
-    "webpack-jasmine-html-runner-plugin": "^0.7.0"
+    "webpack-jasmine-html-runner-plugin": "^0.8.0"
   },
   "devDependencies": {
     "jasmine": "^2.5.3",
-    "webpack": "^2.2.1"
+    "webpack": "^3.5.5"
   },
   "peerDependencies": {
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "example": "node index.js --webpackConfig ./example/webpack.config.js --port 5678 --webpackPort 5679"
+    "example": "node bin/sambac.js --webpackConfig ./example/webpack.config.js --port 5678 --webpackPort 5679"
   }
 }

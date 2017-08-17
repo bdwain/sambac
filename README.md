@@ -23,6 +23,21 @@ If you click the debug link, the loaded tab will not refresh automatically on fi
 
 `--webpackPort 1235` The port the webpack dev server runs on (default: 5679)
 
+#### Node API
+
+If you need to run sambac with the node API:
+
+```js
+const sambac = require('sambac-webpack');
+sambac({
+  webpackConfig: PATH
+  port: port,
+  webpackPort: webpackPort
+});
+```
+
+all of the options have the same defaults as the command line.
+
 #### Configuration options
 To customize sambac, add a sambac property to your webpack config
 
