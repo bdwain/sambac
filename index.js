@@ -44,8 +44,28 @@ module.exports = function(options){
       promise = getSpecsFromPattern(specGlobs);
     }
     return promise.then(arr => {
-      return _.sortBy(arr, 'name');
+      return _.sortBy(arr, getDisplayOption());
     });
+  }
+
+  function getCommonStartPath(files) {
+    files = files.sort();
+    const first = files[0];
+    const last = files[files.length - 1];
+    let rv = '';
+    if (first !== last) {
+      let i;
+      for (i = 0; i < first.length && i < last.length && first.charAt(i) === last.charAt(i); ++i) {
+        // No body, just leading i along
+      }
+      rv = first.substring(0, i);
+    }
+    return rv;
+  }
+
+  function getDisplayOption(spec) {
+    const fileLongEnough = spec ? spec.file.length > spec.name.length : true;
+    return (options.showPath && fileLongEnough) ? 'file' : 'name';
   }
 
   function getSpecsFromPattern(pattern){
@@ -54,13 +74,17 @@ module.exports = function(options){
           if (err) {
               rej(err);
           } else {
+              const commonStart = getCommonStartPath(files);
               res(files.map(file => {
                 const url = `http://localhost:${port}/specs/${file.toString().slice(0, -3)}`;
-                return {
+                const rv = {
                   name: path.basename(file).replace(/\.[^/.]+$/, ""),
+                  file: file.replace(commonStart, '').replace(/\.[^/.]+$/, ""),
                   url,
                   debugUrl: `${url}?debug=true`
                 };
+                rv.display = rv[getDisplayOption(rv)];
+                return rv;
               }));
           }
       });

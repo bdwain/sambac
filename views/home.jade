@@ -15,5 +15,5 @@ html(lang='en')
                     ul(class='jasmine-suite')
                         each spec in specs
                             li(class='jasmine-suite-detail')
-                                a(href=spec.url, target='_blank') #{spec.name}
+                                a(href=spec.url, target='_blank') #{spec.display}
                                 a(href=spec.debugUrl, target='_blank', style='padding-left: 10px;') (debug)
