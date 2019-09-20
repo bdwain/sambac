@@ -77,7 +77,7 @@ module.exports = function(options){
           } else {
               const commonStart = getCommonStartPath(files);
               res(files.map(file => {
-                const url = `http://localhost:${port}/specs/${filePath.slice(0, filePath.lastIndexOf('.'))}`;
+                const url = `http://localhost:${port}/specs/${file.slice(0, file.lastIndexOf('.'))}`;
                 const rv = {
                   name: path.basename(file).replace(/\.[^/.]+$/, ""),
                   file: file.replace(commonStart, '').replace(/\.[^/.]+$/, ""),
