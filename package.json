@@ -9,12 +9,12 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/acaides/sambac.git"
+    "url": "https://github.com/bdwain/sambac.git"
   },
   "keywords": [
     "jasmine"
   ],
-  "author": "Isaiah Simpson <isaiah.simpson@gmail.com>",
+  "author": "Bryan Wain <bryandwain@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "commander": "^2.9.0",
